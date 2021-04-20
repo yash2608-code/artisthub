@@ -1,0 +1,224 @@
+{% load static %}
+{% include 'app/header_base.html' %}
+<!doctype html>
+<html lang="en">
+
+<head>
+
+	<!-- Basic Page Needs
+================================================== -->
+	<title>Hireo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+================================================== -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/colors/blue.css' %}">
+
+</head>
+
+<body class="gray">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header Container
+================================================== -->
+		{% block header %}
+		{% endblock %}
+		<div class="clearfix"></div>
+		<!-- Header Container / End -->
+
+		<!-- Page Content
+================================================== -->
+		<div class="full-page-container">
+
+
+			<!-- Full Page Sidebar / End -->
+
+			<!-- Full Page Content -->
+			<div class="full-page-content-container" data-simplebar>
+				<div class="full-page-content-inner">
+
+					<h3 class="page-title">Search Results</h3>
+
+					<div class="notify-box margin-top-15">
+						<div class="switch-container">
+							<label class="switch"><input type="checkbox"><span class="switch-button"></span><span
+									class="switch-text">Turn on email alerts for this search</span></label>
+						</div>
+
+						<div class="sort-by">
+							<span>Sort by:</span>
+							<select class="selectpicker hide-tick">
+								<option>Relevance</option>
+								<option>Newest</option>
+								<option>Oldest</option>
+								<option>Random</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Freelancers List Container -->
+					<div class="freelancers-container freelancers-grid-layout margin-top-35">
+						{% for i in allart %}
+						<!--Freelancer -->
+						<div class="freelancer">
+							<!-- Overview -->
+							<div class="freelancer-overview">
+								<div class="freelancer-overview-inner">
+
+									<!-- Bookmark Icon -->
+									<span class="bookmark-icon"></span>
+
+									<!-- Avatar -->
+									<div class="freelancer-avatar">
+										<div class="verified-badge"></div>
+										<a href="single-freelancer-profile.html"><img
+												src="{{MEDIA_URL}}{{i.ProfilePic.url}}" width="100" height="100"
+												alt=""></a>
+									</div>
+
+									<!-- Name -->
+									<div class="freelancer-name">
+										<h4><a href="single-freelancer-profile.html">{{i.Firstname}} {{i.Lastname}}</a>
+										</h4>
+										<span>{{i.Designation}}</span>
+									</div>
+
+									<!-- Rating -->
+									<div class="freelancer-rating">
+										<div class="star-rating" data-rating="4.9"></div>
+									</div>
+								</div>
+							</div>
+							<!-- Details -->
+							<div class="freelancer-details">
+								<div class="freelancer-details-list">
+									<ul align="center">
+										<li>{{i.Loc}} <strong><i class="icon-material-outline-location-on"></i>
+												London</strong></li>
+										<li>Rate <strong>${{i.rate}} / hr</strong></li>
+										<!-- <li>Job Success <strong>95%</strong></li> -->
+									</ul>
+								</div>
+								<a href="{% url 'artpro' pk=i.id %}"
+									class="button button-sliding-icon ripple-effect">View Profile <i
+										class="icon-material-outline-arrow-right-alt"></i></a>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<!-- Freelancers Container / End -->
+
+					<!-- Pagination -->
+					<div class="clearfix"></div>
+					<!-- <div class="pagination-container margin-top-20 margin-bottom-20">
+				<nav class="pagination">
+					<ul>
+						<li class="pagination-arrow"><a href="#" class="ripple-effect"><i class="icon-material-outline-keyboard-arrow-left"></i></a></li>
+						<li><a href="#" class="ripple-effect">1</a></li>
+						<li><a href="#" class="ripple-effect current-page">2</a></li>
+						<li><a href="#" class="ripple-effect">3</a></li>
+						<li><a href="#" class="ripple-effect">4</a></li>
+						<li class="pagination-arrow"><a href="#" class="ripple-effect"><i class="icon-material-outline-keyboard-arrow-right"></i></a></li>
+					</ul>
+				</nav>
+			</div> -->
+					<div class="clearfix"></div>
+					<!-- Pagination / End -->
+
+					<!-- Footer -->
+					<div class="small-footer margin-top-15">
+						<div class="small-footer-copyrights">
+							© 2018 <strong>Hireo</strong>. All Rights Reserved.
+						</div>
+						<ul class="footer-social-links">
+							<li>
+								<a href="#" title="Facebook" data-tippy-placement="top">
+									<i class="icon-brand-facebook-f"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="Twitter" data-tippy-placement="top">
+									<i class="icon-brand-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="Google Plus" data-tippy-placement="top">
+									<i class="icon-brand-google-plus-g"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="LinkedIn" data-tippy-placement="top">
+									<i class="icon-brand-linkedin-in"></i>
+								</a>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<!-- Footer / End -->
+
+				</div>
+			</div>
+			<!-- Full Page Content / End -->
+
+		</div>
+
+
+	</div>
+	<!-- Wrapper / End -->
+
+	<!-- Scripts
+================================================== -->
+	<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}"></script>
+	<script src="{% static 'js/mmenu.min.js' %}"></script>
+	<script src="{% static 'js/tippy.all.min.js' %}"></script>
+	<script src="{% static 'js/simplebar.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap-slider.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap-select.min.js' %}"></script>
+	<script src="{% static 'js/snackbar.js' %}"></script>
+	<script src="{% static 'js/clipboard.min.js' %}"></script>
+	<script src="{% static 'js/counterup.min.js' %}"></script>
+	<script src="{% static 'js/magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/slick.min.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+
+	<!-- Snackbar // documentation: https://www.polonel.com/snackbar/ -->
+	<script>
+		// Snackbar for user status switcher
+		$('.status-switch label').click(function () {
+			Snackbar.show({
+				text: 'Your status has been changed!',
+				pos: 'bottom-center',
+				showAction: false,
+				actionText: "Dismiss",
+				duration: 3000,
+				textColor: '#fff',
+				backgroundColor: '#383838'
+			});
+		});
+	</script>
+
+	<!-- Google Autocomplete -->
+	<script>
+		function initAutocomplete() {
+			var options = {
+				types: ['(cities)'],
+				// componentRestrictions: {country: "us"}
+			};
+
+			var input = document.getElementById('autocomplete-input');
+			var autocomplete = new google.maps.places.Autocomplete(input, options);
+		}
+	</script>
+
+	<!-- Google API & Maps -->
+	<!-- Geting an API Key: https://developers.google.com/maps/documentation/javascript/get-api-key -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places"></script>
+
+</body>
+
+</html>
